@@ -53,30 +53,8 @@ go get -v github.com/cjx2328/gocms
 </details>
 
 
-## 界面截图
-
-<details>
-<summary>展开查看</summary>
-<pre><code>.
-<img src="./login.jpeg" width="900" height="600" /><br/><br/>
-<img src="./icon.jpeg" width="900" height="900" /><br/><br/>
-<img src="./menu.jpeg" width="900" height="900" /><br/><br/>
-<img src="./role.jpeg" width="900" height="900" /><br/><br/>
-<img src="./admins.jpeg" width="900" height="900" /><br/><br/>
-</code></pre>
-</details>
-
-## Donate
-
-- If you find this project useful, you can buy author a glass of juice 
-- alipay
-- <img src="./img/alipay.jpg" width="256" height="256" />
-- wechat
-- <img src="./img/wxpay.jpg" width="256" height="256" />
-- [Buy me a coffee](https://www.buymeacoffee.com/it234)
-- bitcoin address : 1LwTcCZ1p5kq8UokZGUBVy3BL1wRa3q5Wn
-- eth address : 0x68ca43651529D12996183d09a052a654F845cB89
-- eos address : 123451234534
+ 
+ 
 
 ## 相关文章
 
