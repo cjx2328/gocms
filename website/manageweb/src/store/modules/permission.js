@@ -187,5 +187,6 @@ export const componentsMap = {
   Models: () => import('@/views/app/sys/models'), // 数据库还原
   Columns: () => import('@/views/app/sys/columns'), // 栏目列表
   Membersgroup: () => import('@/views/app/sys/membersgroup'), // 会员组
+  Members: () => import('@/views/app/sys/members'), // 会员列表
   Test: () => import('@/views/app/sys/test') // test
 }

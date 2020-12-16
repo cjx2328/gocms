@@ -6,9 +6,17 @@
 
         <el-col :span="24">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="会员组" name="showdb">
+            <el-tab-pane label="会员列表" name="showdb">
 
-              <el-button type="primary">添加会员组</el-button>
+              <el-form :inline="true"  class="demo-form-inline">
+                <el-form-item label="搜索">
+                  <el-input placeholder="用户/邮箱/手机"></el-input>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-button type="primary" @click="onSubmit">查询</el-button>
+                </el-form-item>
+              </el-form>
 
               <el-table
                       :data="tableData"
@@ -20,16 +28,28 @@
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="名称"
+                        label="用户名"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="address"
-                        label="满足条件">
+                        label="会员等级">
                 </el-table-column>
                 <el-table-column
                         prop="address"
-                        label="排序">
+                        label="邮箱">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="手机">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="状态">
+                </el-table-column>
+                <el-table-column
+                        prop="address"
+                        label="注册时间">
                 </el-table-column>
 
                 <el-table-column
@@ -58,7 +78,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Membersgroup',
+  name: 'Members',
   data() {
     return {
       sysconfig: {
