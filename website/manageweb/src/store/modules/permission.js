@@ -182,5 +182,6 @@ export const componentsMap = {
   Role: () => import('@/views/app/sys/role'), // 后台角色
   Systemconfig: () => import('@/views/app/sys/systemconfig'), // 系统配置
   Emailconfig: () => import('@/views/app/sys/emailconfig'), // 邮箱设置配置
+  Dbbackup: () => import('@/views/app/sys/dbbackup'), // 数据库备份
   Test: () => import('@/views/app/sys/test') // test
 }
