@@ -183,5 +183,7 @@ export const componentsMap = {
   Systemconfig: () => import('@/views/app/sys/systemconfig'), // 系统配置
   Emailconfig: () => import('@/views/app/sys/emailconfig'), // 邮箱设置配置
   Dbbackup: () => import('@/views/app/sys/dbbackup'), // 数据库备份
+  Dbreduction: () => import('@/views/app/sys/dbreduction'), // 数据库还原
+  Models: () => import('@/views/app/sys/models'), // 数据库还原
   Test: () => import('@/views/app/sys/test') // test
 }
