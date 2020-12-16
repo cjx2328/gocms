@@ -2,82 +2,39 @@
   <div class="app-container">
     <div class="filter-container">
       <el-row>
-        <el-col span="8">
+        <el-col span="12">
           <el-tabs v-model="activeName" @tab-click="handleClick">
             <el-tab-pane label="基础设置" name="baseConfig">
-              <el-form ref="form" :model="form" label-width="80px">
-                <el-form-item label="网站名称">
-                  <el-input v-model="sysconfig.site_name" placeholder="请输入网站名称" />
+              <el-form ref="form" :model="form" label-width="120px">
+                <el-form-item label="服务器">
+                  <el-input v-model="sysconfig.email_host" placeholder="请输入服务器地址" />
                 </el-form-item>
-                <el-form-item label="网站地址">
-                  <el-input v-model="sysconfig.site_host" placeholder="请输入网站的地址 例如: http://www.google.com"/>
+                <el-form-item label="SMTP端口">
+                  <el-input v-model="sysconfig.email_SMTP_port" placeholder="请输SMTP端口号" />
                 </el-form-item>
-                <el-form-item label="网站logo">
-                  <el-upload
-                          class="upload-demo"
-                          action="https:///posts/"
-                          :on-preview="handlePreview"
-                          :on-remove="handleRemove"
-                          :file-list="fileList"
-                          list-type="picture">
-                    <el-button size="small" type="primary">点击上传</el-button>
-                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-                  </el-upload>
+
+                <el-form-item label="发件人">
+                  <el-input v-model="sysconfig.email_send_user" placeholder="请输入发件人" />
                 </el-form-item>
-                <el-form-item label="备案号">
-                  <el-input  v-model="sysconfig.site_icp" placeholder="请输入网站备案号"/>
+                <el-form-item label="发件邮箱">
+                  <el-input v-model="sysconfig.email_send_email_account" placeholder="请输入发件邮箱账号" />
                 </el-form-item>
-                <el-form-item label="copyright">
-                  <el-input  v-model="sysconfig.site_copyright" placeholder="请输入网站copyright"/>
+                <el-form-item label="身份码">
+                  <el-input v-model="sysconfig.email_smtp_passwords" placeholder="请输入SMTP发件身份验证码" />
                 </el-form-item>
-                <el-form-item label="公司地址">
-                  <el-input v-model="sysconfig.site_addresss" placeholder="请输入网站通信地址" />
+                <el-form-item label="测试收件邮箱">
+                  <el-input v-model="sysconfig.email_test_email" placeholder="请输入收件的测试邮箱" />
                 </el-form-item>
-                <el-form-item label="联系电话">
-                  <el-input v-model="sysconfig.site_mobile" placeholder="请输入联系方式"/>
+
+                <el-form-item label="测试邮件内容">
+                  <el-input v-model="sysconfig.email_test_contents" type="textarea" placeholder="请输入准备发生的测试内容" />
+                  <span>【请勿测试违法违规内容】</span>
                 </el-form-item>
-                <el-form-item label="邮箱账号">
-                  <el-input v-model="sysconfig.site_email" placeholder="请输入E_mail"/>
-                </el-form-item>
-                <el-form-item label="统计代码">
-                  <el-input type="textarea" v-model="sysconfig.site_countcode" placeholder="请输入统计代码：谷歌、友盟等"/>
-                </el-form-item>
-                <el-form-item label="客服代码">
-                  <el-input type="textarea" v-model="sysconfig.site_servicecode" placeholder="请输入在线客服代码"/>
-                </el-form-item>
+
                 <el-form-item>
                   <el-button type="primary" @click="savesysconfig">保存</el-button>
                   <el-button>取消</el-button>
                 </el-form-item>
-              </el-form>
-            </el-tab-pane>
-            <el-tab-pane label="SEO设置" name="seoConfig">
-              <el-form ref="form" :model="form" label-width="80px">
-                <el-form-item label="seo标题">
-                  <el-input v-model="sysconfig.site_seo_title" placeholder="请输入seo标题" />
-                </el-form-item>
-                     <el-form-item label="seo关键字">
-                  <el-input v-model="sysconfig.site_seo_keywords" placeholder="请输入seo关键字" />
-                </el-form-item>
-                     <el-form-item label="seo描述">
-                  <el-input type="textarea" v-model="sysconfig.site_seo_desc" placeholder="请输入seo描述" />
-                </el-form-item>
-
-              </el-form>
-            </el-tab-pane>
-            <el-tab-pane label="其他设置" name="otherConfig">
-              <el-form ref="form" :model="form" label-width="80px">
-                <el-form-item label="验证码">
-
-                  <el-switch
-                          v-model="value1"
-                          active-text="开启"
-                          inactive-text="关闭">
-                  </el-switch>
-
-
-                </el-form-item>
-
               </el-form>
             </el-tab-pane>
 
@@ -106,20 +63,20 @@ export default {
         site_name: '忠告'
       },
       activeName: 'baseConfig',
-        fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
+      fileList: [{ name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100' }],
 
-        , value1: true,
-        value2: true
+      value1: true,
+      value2: true
     }
   },
-    methods: {
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
-        },
-        handlePreview(file) {
-            console.log(file);
-        }
+  methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview(file) {
+      console.log(file)
     }
+  }
 }
 
 </script>
