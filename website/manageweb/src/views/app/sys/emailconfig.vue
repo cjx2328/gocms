@@ -15,7 +15,7 @@
                 <el-form-item label="网站logo">
                   <el-upload
                           class="upload-demo"
-                          action="https://jsonplaceholder.typicode.com/posts/"
+                          action="https:///posts/"
                           :on-preview="handlePreview"
                           :on-remove="handleRemove"
                           :file-list="fileList"
