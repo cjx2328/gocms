@@ -181,5 +181,6 @@ export const componentsMap = {
   Admins: () => import('@/views/app/sys/admins'), // 后台管理员
   Role: () => import('@/views/app/sys/role'), // 后台角色
   Systemconfig: () => import('@/views/app/sys/systemconfig'), // 系统配置
+  Emailconfig: () => import('@/views/app/sys/emailconfig'), // 邮箱设置配置
   Test: () => import('@/views/app/sys/test') // test
 }

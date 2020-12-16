@@ -234,6 +234,11 @@ func (User) Info(c *gin.Context) {
 			models.Create(&menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/menu", Name: "菜单管理", Sequence: 20, MenuType: 2, Code: "Menu",Icon:"documentation",OperateType:"none"}
 			models.Create(&menuModel)
+			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/systemconfig", Name: "系统设置", Sequence: 30, MenuType: 2, Code: "Systemconfig",Icon:"documentation",OperateType:"none"}
+			models.Create(&menuModel)
+			InitMenu(menuModel)
+			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/emailconfig", Name: "邮箱设置", Sequence: 40, MenuType: 2, Code: "Emailconfig",Icon:"documentation",OperateType:"none"}
+			models.Create(&menuModel)
 			InitMenu(menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/role", Name: "角色管理", Sequence: 30, MenuType: 2, Code: "Role",Icon:"tree",OperateType:"none"}
 			models.Create(&menuModel)
@@ -245,7 +250,57 @@ func (User) Info(c *gin.Context) {
 			InitMenu(menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModel.ID, URL: "/admins/setrole", Name: "分配角色", Sequence: 6, MenuType: 3, Code: "AdminsSetrole",Icon:"",OperateType:"setadminrole"}
 			models.Create(&menuModel)
-			
+
+			menuModelDbconfig := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "数据库管理", Sequence:50, MenuType: 1, Code: "Dbconfig",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelDbconfig)
+			menuModeldbcon := sys.Menu{Status: 1, ParentID: menuModelDbconfig.ID, URL: "/dbbackup", Name: "数据库备份", Sequence: 10, MenuType: 2, Code: "Dbbackup",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModeldbcon)
+			InitMenu(menuModeldbcon)
+			menuModeldbcon = sys.Menu{Status: 1, ParentID: menuModelDbconfig.ID, URL: "/dbreduction", Name: "数据库还原", Sequence: 10, MenuType: 2, Code: "Dbreduction",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModeldbcon)
+			InitMenu(menuModeldbcon)
+			//InitMenu(menuModeldbcon)
+			menuModelModels := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "模型管理", Sequence: 60, MenuType: 1, Code: "Modelsconfig",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelModels)
+			menuModelModelslist := sys.Menu{Status: 1, ParentID: menuModelModels.ID, URL: "/models", Name: "模型列表", Sequence: 10, MenuType: 2, Code: "Models",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelModelslist)
+			InitMenu(menuModelModelslist)
+			menuModelColumnscon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "栏目管理", Sequence: 70, MenuType: 1, Code: "Columnscon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelColumnscon)
+			menuModelColumns := sys.Menu{Status: 1, ParentID: menuModelColumnscon.ID, URL: "/columns", Name: "栏目列表", Sequence: 10, MenuType: 2, Code: "Columns",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelColumns)
+			InitMenu(menuModelColumns)
+			menuModelMembercon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "会员管理", Sequence: 80, MenuType: 1, Code: "Membercon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelMembercon)
+			menuModelMembers := sys.Menu{Status: 1, ParentID: menuModelMembercon.ID, URL: "/members", Name: "会员列表", Sequence: 10, MenuType: 2, Code: "Members",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelMembers)
+			menuModelMembers = sys.Menu{Status: 1, ParentID: menuModelMembercon.ID, URL: "/membersgroup", Name: "会员组", Sequence: 10, MenuType: 2, Code: "Membersgroup",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelMembers)
+			InitMenu(menuModelMembers)
+			menuModelFunctioncon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "网站功能", Sequence: 90, MenuType: 1, Code: "Functioncon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelFunctioncon)
+			menuModelFunctions := sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/messages", Name: "留言管理", Sequence: 10, MenuType: 2, Code: "Messages",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelFunctions)
+			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/links", Name: "友情链接", Sequence: 10, MenuType: 2, Code: "Links",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelFunctions)
+			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/ads", Name: "广告管理", Sequence: 10, MenuType: 2, Code: "Ads",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelFunctions)
+			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/adssite", Name: "广告位管理", Sequence: 10, MenuType: 2, Code: "Adssite",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelFunctions)
+			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/donation", Name: "捐赠管理", Sequence: 10, MenuType: 2, Code: "Donation",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelFunctions)
+			InitMenu(menuModelFunctions)
+			menuModelTemplatecon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "模板管理", Sequence: 91, MenuType: 1, Code: "Templatecon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelTemplatecon)
+			menuModelTemplates := sys.Menu{Status: 1, ParentID: menuModelTemplatecon.ID, URL: "/templates", Name: "模板管理", Sequence: 10, MenuType: 2, Code: "Templates",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelTemplates)
+			menuModelTemplates = sys.Menu{Status: 1, ParentID: menuModelTemplatecon.ID, URL: "/pizzles", Name: "拼图管理", Sequence: 10, MenuType: 2, Code: "Pizzles",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelTemplates)
+			menuModelTemplates = sys.Menu{Status: 1, ParentID: menuModelTemplatecon.ID, URL: "/pizzlesclass", Name: "拼图分类", Sequence: 10, MenuType: 2, Code: "Pizzlesclass",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelTemplates)
+			InitMenu(menuModelTemplates)
+
+
 			menuData, _= getAllMenu()
 		}
 	} else {

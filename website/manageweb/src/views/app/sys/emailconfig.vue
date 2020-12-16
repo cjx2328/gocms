@@ -99,7 +99,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Systemconfig',
+  name: 'Emailconfig',
   data() {
     return {
       sysconfig: {
