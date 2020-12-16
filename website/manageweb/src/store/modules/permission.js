@@ -185,5 +185,7 @@ export const componentsMap = {
   Dbbackup: () => import('@/views/app/sys/dbbackup'), // 数据库备份
   Dbreduction: () => import('@/views/app/sys/dbreduction'), // 数据库还原
   Models: () => import('@/views/app/sys/models'), // 数据库还原
+  Columns: () => import('@/views/app/sys/columns'), // 栏目列表
+  Membersgroup: () => import('@/views/app/sys/membersgroup'), // 会员组
   Test: () => import('@/views/app/sys/test') // test
 }
