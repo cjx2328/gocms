@@ -190,6 +190,7 @@ export const componentsMap = {
   Members: () => import('@/views/app/sys/members'), // 会员列表
   Adssite: () => import('@/views/app/sys/adssite'), // 广告位管理
   Ads: () => import('@/views/app/sys/ads'), // 广告管理
-  Links: () => import('@/views/app/sys/links'), // 广告管理
+  Links: () => import('@/views/app/sys/links'), // 友情链接管理
+  Messages: () => import('@/views/app/sys/messages'), // 留言管理
   Test: () => import('@/views/app/sys/test') // test
 }
