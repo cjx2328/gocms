@@ -194,5 +194,6 @@ export const componentsMap = {
   Messages: () => import('@/views/app/sys/messages'), // 留言管理
   Pizzlesclass: () => import('@/views/app/sys/pizzlesclass'), // 碎片分类
   Pizzles: () => import('@/views/app/sys/pizzles'), // 碎片分类
+  Templates: () => import('@/views/app/sys/templates'), // 碎片分类
   Test: () => import('@/views/app/sys/test') // test
 }
