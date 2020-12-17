@@ -192,5 +192,7 @@ export const componentsMap = {
   Ads: () => import('@/views/app/sys/ads'), // 广告管理
   Links: () => import('@/views/app/sys/links'), // 友情链接管理
   Messages: () => import('@/views/app/sys/messages'), // 留言管理
+  Pizzlesclass: () => import('@/views/app/sys/pizzlesclass'), // 碎片分类
+  Pizzles: () => import('@/views/app/sys/pizzles'), // 碎片分类
   Test: () => import('@/views/app/sys/test') // test
 }
