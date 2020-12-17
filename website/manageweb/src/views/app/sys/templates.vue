@@ -5,36 +5,39 @@
       <el-row>
 
         <el-col :span="24">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="模型列表" name="showdb">
+          <el-button type="primary" @click="onSubmit">添加模板</el-button>
 
-              <el-button type="primary">添加模型</el-button>
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="模板管理" name="showdb">
+
+
+              <el-button type="primary" @click="onSubmit">HTML</el-button>
+              <el-button type="primary" @click="onSubmit">CSS</el-button>
+              <el-button type="primary" @click="onSubmit">JS</el-button>
+              <el-button type="primary" @click="onSubmit">媒体文件管理</el-button>
 
               <el-table
                       :data="tableData"
                       style="width: 100%">
                 <el-table-column
                         prop="date"
-                        label="编号"
+                        label="文件名称"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="模型名称"
+                        label="文件大小"
                         width="180">
                 </el-table-column>
+
+
                 <el-table-column
                         prop="address"
-                        label="表名">
+                        label="修改日期">
                 </el-table-column>
-                <el-table-column
-                        prop="address"
-                        label="详细描述">
-                </el-table-column>
-                <el-table-column
-                        prop="address"
-                        label="状态">
-                </el-table-column>
+
+
+
                 <el-table-column
                         prop="address"
                         label="操作">
@@ -61,7 +64,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Models',
+  name: 'Templates',
   data() {
     return {
       sysconfig: {

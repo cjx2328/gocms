@@ -6,9 +6,17 @@
 
         <el-col :span="24">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="模型列表" name="showdb">
+            <el-tab-pane label="拼图分类管理" name="showdb">
 
-              <el-button type="primary">添加模型</el-button>
+              <el-form :inline="true"  class="demo-form-inline">
+                <el-form-item label="搜索">
+                  <el-input placeholder="关键字"></el-input>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-button type="primary" @click="onSubmit">查询</el-button>
+                </el-form-item>
+              </el-form>
 
               <el-table
                       :data="tableData"
@@ -20,21 +28,22 @@
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="模型名称"
+                        label="拼图分类名称"
                         width="180">
                 </el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="表名">
+                        prop="name"
+                        label="标识"
+                        width="180">
                 </el-table-column>
+
+
                 <el-table-column
                         prop="address"
-                        label="详细描述">
+                        label="排序">
                 </el-table-column>
-                <el-table-column
-                        prop="address"
-                        label="状态">
-                </el-table-column>
+
+
                 <el-table-column
                         prop="address"
                         label="操作">
@@ -61,7 +70,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Models',
+  name: 'Pizzlesclass',
   data() {
     return {
       sysconfig: {

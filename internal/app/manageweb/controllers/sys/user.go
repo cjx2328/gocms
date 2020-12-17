@@ -287,8 +287,6 @@ func (User) Info(c *gin.Context) {
 			models.Create(&menuModelFunctions)
 			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/adssite", Name: "广告位管理", Sequence: 10, MenuType: 2, Code: "Adssite",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelFunctions)
-			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/donation", Name: "捐赠管理", Sequence: 10, MenuType: 2, Code: "Donation",Icon:"icon",OperateType:"none"}
-			models.Create(&menuModelFunctions)
 			InitMenu(menuModelFunctions)
 			menuModelTemplatecon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "模板管理", Sequence: 91, MenuType: 1, Code: "Templatecon",Icon:"lock",OperateType:"none"}
 			models.Create(&menuModelTemplatecon)

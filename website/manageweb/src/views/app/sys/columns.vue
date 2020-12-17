@@ -6,9 +6,9 @@
 
         <el-col :span="24">
           <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="模型列表" name="showdb">
+            <el-tab-pane label="栏目列表" name="showdb">
 
-              <el-button type="primary">添加模型</el-button>
+              <el-button type="primary">添加栏目</el-button>
 
               <el-table
                       :data="tableData"
@@ -20,20 +20,20 @@
                 </el-table-column>
                 <el-table-column
                         prop="name"
-                        label="模型名称"
+                        label="栏目名称【点击查看相关的文章】"
                         width="180">
                 </el-table-column>
                 <el-table-column
                         prop="address"
-                        label="表名">
+                        label="归属模型">
                 </el-table-column>
                 <el-table-column
                         prop="address"
-                        label="详细描述">
+                        label="导航显示">
                 </el-table-column>
                 <el-table-column
                         prop="address"
-                        label="状态">
+                        label="排序">
                 </el-table-column>
                 <el-table-column
                         prop="address"
@@ -61,7 +61,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Models',
+  name: 'Columns',
   data() {
     return {
       sysconfig: {

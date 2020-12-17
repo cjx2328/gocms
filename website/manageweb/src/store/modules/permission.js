@@ -185,5 +185,15 @@ export const componentsMap = {
   Dbbackup: () => import('@/views/app/sys/dbbackup'), // 数据库备份
   Dbreduction: () => import('@/views/app/sys/dbreduction'), // 数据库还原
   Models: () => import('@/views/app/sys/models'), // 数据库还原
+  Columns: () => import('@/views/app/sys/columns'), // 栏目列表
+  Membersgroup: () => import('@/views/app/sys/membersgroup'), // 会员组
+  Members: () => import('@/views/app/sys/members'), // 会员列表
+  Adssite: () => import('@/views/app/sys/adssite'), // 广告位管理
+  Ads: () => import('@/views/app/sys/ads'), // 广告管理
+  Links: () => import('@/views/app/sys/links'), // 友情链接管理
+  Messages: () => import('@/views/app/sys/messages'), // 留言管理
+  Pizzlesclass: () => import('@/views/app/sys/pizzlesclass'), // 碎片分类
+  Pizzles: () => import('@/views/app/sys/pizzles'), // 碎片分类
+  Templates: () => import('@/views/app/sys/templates'), // 碎片分类
   Test: () => import('@/views/app/sys/test') // test
 }
