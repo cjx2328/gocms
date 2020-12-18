@@ -236,6 +236,8 @@ func (User) Info(c *gin.Context) {
 			models.Create(&menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/systemconfig", Name: "系统设置", Sequence: 30, MenuType: 2, Code: "Systemconfig",Icon:"documentation",OperateType:"none"}
 			models.Create(&menuModel)
+			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/adminLogs", Name: "管理员日志", Sequence: 30, MenuType: 2, Code: "AdminLogs",Icon:"documentation",OperateType:"none"}
+			models.Create(&menuModel)
 			InitMenu(menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/emailconfig", Name: "邮箱设置", Sequence: 40, MenuType: 2, Code: "Emailconfig",Icon:"documentation",OperateType:"none"}
 			models.Create(&menuModel)
@@ -288,6 +290,8 @@ func (User) Info(c *gin.Context) {
 			menuModelFunctions = sys.Menu{Status: 1, ParentID: menuModelFunctioncon.ID, URL: "/adssite", Name: "广告位管理", Sequence: 10, MenuType: 2, Code: "Adssite",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelFunctions)
 			InitMenu(menuModelFunctions)
+
+
 			menuModelTemplatecon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "模板管理", Sequence: 91, MenuType: 1, Code: "Templatecon",Icon:"lock",OperateType:"none"}
 			models.Create(&menuModelTemplatecon)
 			menuModelTemplates := sys.Menu{Status: 1, ParentID: menuModelTemplatecon.ID, URL: "/templates", Name: "模板管理", Sequence: 10, MenuType: 2, Code: "Templates",Icon:"icon",OperateType:"none"}
@@ -297,6 +301,16 @@ func (User) Info(c *gin.Context) {
 			menuModelTemplates = sys.Menu{Status: 1, ParentID: menuModelTemplatecon.ID, URL: "/pizzlesclass", Name: "拼图分类", Sequence: 10, MenuType: 2, Code: "Pizzlesclass",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelTemplates)
 			InitMenu(menuModelTemplates)
+
+			menuModelweixincon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "微信管理", Sequence: 91, MenuType: 1, Code: "Weixincon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelweixincon)
+			menuModelweixins := sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixins", Name: "模板管理", Sequence: 10, MenuType: 2, Code: "weixins",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/pizzles", Name: "拼图管理", Sequence: 10, MenuType: 2, Code: "Pizzles",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/pizzlesclass", Name: "拼图分类", Sequence: 10, MenuType: 2, Code: "Pizzlesclass",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			InitMenu(menuModelweixins)
 
 
 			menuData, _= getAllMenu()
