@@ -302,14 +302,26 @@ func (User) Info(c *gin.Context) {
 			models.Create(&menuModelTemplates)
 			InitMenu(menuModelTemplates)
 
-			menuModelweixincon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "微信管理", Sequence: 91, MenuType: 1, Code: "Weixincon",Icon:"lock",OperateType:"none"}
+			menuModelweixincon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "微信管理", Sequence: 92, MenuType: 1, Code: "Weixincon",Icon:"lock",OperateType:"none"}
 			models.Create(&menuModelweixincon)
-			menuModelweixins := sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixins", Name: "模板管理", Sequence: 10, MenuType: 2, Code: "weixins",Icon:"icon",OperateType:"none"}
+			menuModelweixins := sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixins", Name: "公众号管理", Sequence: 10, MenuType: 2, Code: "Weixins",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelweixins)
-			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/pizzles", Name: "拼图管理", Sequence: 10, MenuType: 2, Code: "Pizzles",Icon:"icon",OperateType:"none"}
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixinmenus", Name: "菜单管理", Sequence: 10, MenuType: 2, Code: "Weixinmenus",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelweixins)
-			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/pizzlesclass", Name: "拼图分类", Sequence: 10, MenuType: 2, Code: "Pizzlesclass",Icon:"icon",OperateType:"none"}
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixingroupmsg", Name: "图文群发", Sequence: 10, MenuType: 2, Code: "Weixingroupmsg",Icon:"icon",OperateType:"none"}
 			models.Create(&menuModelweixins)
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixinmsgmanager", Name: "消息管理", Sequence: 10, MenuType: 2, Code: "Weixinmsgmanager",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixinfans", Name: "粉丝管理", Sequence: 10, MenuType: 2, Code: "Weixinfans",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			menuModelweixins = sys.Menu{Status: 1, ParentID: menuModelweixincon.ID, URL: "/weixinreplays", Name: "自动回复", Sequence: 10, MenuType: 2, Code: "Weixinreplays",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelweixins)
+			InitMenu(menuModelweixins)
+
+			menuModelpluginscon := sys.Menu{Status: 1, ParentID: menuModelTop.ID, URL: "", Name: "插件管理", Sequence: 93, MenuType: 1, Code: "Pluginscon",Icon:"lock",OperateType:"none"}
+			models.Create(&menuModelpluginscon)
+			menuModelhiolidays := sys.Menu{Status: 1, ParentID: menuModelpluginscon.ID, URL: "/holidays", Name: "节日管理", Sequence: 10, MenuType: 2, Code: "Holidays",Icon:"icon",OperateType:"none"}
+			models.Create(&menuModelhiolidays)
 			InitMenu(menuModelweixins)
 
 
