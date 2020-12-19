@@ -163,7 +163,7 @@ import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
 
 export default {
-  name: 'Weixingroupmsg',
+    name: 'Weixingroupmsg',
   data() {
     return {
       sysconfig: {
