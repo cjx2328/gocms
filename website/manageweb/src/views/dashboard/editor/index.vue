@@ -71,8 +71,8 @@
           <div     class="text item">
 
 
-                  <div ref="myEchart2" style="height: 350px;">
-                  </div>
+
+            <div ref="initCharts" :style="{height: '400px',width:'100%'}"  ></div>
 
 
 
@@ -130,7 +130,12 @@ import { mapGetters } from 'vuex'
 import PanThumb from '@/components/PanThumb'
 // import GithubCorner from '@/components/GithubCorner'
 
+//全部引入
+var echarts = require('echarts')
+
+
 export default {
+
   name: 'DashboardEditor',
   components: { PanThumb },
   data() {
@@ -154,51 +159,8 @@ export default {
             todojobs: '您有23笔退款需要处理',
             businessprodate: '王小虎',
             address: '上海市普陀区金沙江路 1516 弄'
-        }],
-        initChart1(typeTitle, typeData) {
-            let app = this;
-            let myChart = app.$echarts.init(this.$refs.myEchart1);
+        }]
 
-            let option = {
-                tooltip: {
-                    trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 10,
-                    data: typeTitle
-                },
-                series: [
-                    {
-                        name: '车辆类型统计',
-                        type: 'pie',
-                        radius: ['50%', '70%'],
-                        avoidLabelOverlap: false,
-                        label: {
-                            normal: {
-                                show: false,
-                                position: 'center'
-                            },
-                            emphasis: {
-                                show: true,
-                                textStyle: {
-                                    fontSize: '30',
-                                    fontWeight: 'bold'
-                                }
-                            }
-                        },
-                        labelLine: {
-                            normal: {
-                                show: false
-                            }
-                        },
-                        data: typeData
-                    }
-                ]
-            };
-            myChart.setOption(option);
-        },
     }
 
   },
@@ -208,7 +170,34 @@ export default {
       'avatar',
       'roles'
     ])
-  }
+  },
+    mounted() {
+        this.initCharts();
+    },
+    methods: {
+        initCharts() {
+            this.chart = echarts.init(this.$refs.initCharts);
+            this.setOptions();
+        },
+        setOptions() {
+            this.chart.setOption({
+
+                tooltip: {},
+                xAxis: {
+                    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '销量',
+                    type: 'line',
+                    data: [5, 20, 36, 10, 10, 20]
+                }]
+            })
+        }
+    },
+    watch: {
+
+    }
 }
 
 </script>
