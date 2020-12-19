@@ -194,8 +194,10 @@ export const componentsMap = {
   Messages: () => import('@/views/app/sys/messages'), // 留言管理
   Pizzlesclass: () => import('@/views/app/sys/pizzlesclass'), // 碎片分类
   Pizzles: () => import('@/views/app/sys/pizzles'), // 碎片分类
-  Templates: () => import('@/views/app/sys/templates'), // 碎片分类
-  Weixinmenus: () => import('@/views/app/sys/weixinmenus'), // 碎片分类
-  Weixins: () => import('@/views/app/sys/weixins'), // 碎片分类
+  Templates: () => import('@/views/app/sys/templates'), // 模板管理
+  Weixinmenus: () => import('@/views/app/sys/weixinmenus'), // 微信目录
+  Weixins: () => import('@/views/app/sys/weixins'), // 公众号管理
+  Weixingroupmsg: () => import('@/views/app/sys/weixingroupmsg'), // 消息群发
+  Weixinmsgmanager: () => import('@/views/app/sys/weixinmsgmanager'), // 消息群发
   Test: () => import('@/views/app/sys/test') // test
 }
