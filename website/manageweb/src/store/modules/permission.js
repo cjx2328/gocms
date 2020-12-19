@@ -198,6 +198,9 @@ export const componentsMap = {
   Weixinmenus: () => import('@/views/app/sys/weixinmenus'), // 微信目录
   Weixins: () => import('@/views/app/sys/weixins'), // 公众号管理
   Weixingroupmsg: () => import('@/views/app/sys/weixingroupmsg'), // 消息群发
-  Weixinmsgmanager: () => import('@/views/app/sys/weixinmsgmanager'), // 消息群发
+  Weixinmsgmanager: () => import('@/views/app/sys/weixinmsgmanager'), // 消息管理
+  Weixinfans: () => import('@/views/app/sys/weixinfans'), // 粉丝管理
+  Weixinreplays: () => import('@/views/app/sys/weixinreplays'), // 自动回复
+  Holidays: () => import('@/views/app/sys/holidays'), // 假日插件
   Test: () => import('@/views/app/sys/test') // test
 }
