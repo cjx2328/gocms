@@ -195,5 +195,7 @@ export const componentsMap = {
   Pizzlesclass: () => import('@/views/app/sys/pizzlesclass'), // 碎片分类
   Pizzles: () => import('@/views/app/sys/pizzles'), // 碎片分类
   Templates: () => import('@/views/app/sys/templates'), // 碎片分类
+  Weixinmenus: () => import('@/views/app/sys/weixinmenus'), // 碎片分类
+  Weixins: () => import('@/views/app/sys/weixins'), // 碎片分类
   Test: () => import('@/views/app/sys/test') // test
 }
