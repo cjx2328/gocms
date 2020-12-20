@@ -1,4 +1,4 @@
-module github.com/it234/goapp/internal
+module github.com/cjx2328/gocms/internal
 
 go 1.12
 

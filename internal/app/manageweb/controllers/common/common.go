@@ -58,7 +58,7 @@ func ResJSON(c *gin.Context, status int, v interface{}) {
 }
 
 // 响应错误-服务端故障
-func ResErrSrv(c *gin.Context, err error) {
+func ResErrSrv(c *gin.Context) {
 	ret := ResponseModelBase{Code: FAIL_CODE, Message: "服务端故障"}
 	ResJSON(c, http.StatusOK, &ret)
 }

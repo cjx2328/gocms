@@ -1,9 +1,9 @@
 package common
 
 import (
-	models "github.com/it234/goapp/internal/pkg/models/common"
-	"github.com/it234/goapp/internal/pkg/models/sys"
-	"github.com/it234/goapp/pkg/convert"
+	models "github.com/cjx2328/gocms/internal/pkg/models/common"
+	"github.com/cjx2328/gocms/internal/pkg/models/sys"
+	"github.com/cjx2328/gocms/pkg/convert"
 
 	"github.com/casbin/casbin"
 )

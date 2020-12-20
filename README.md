@@ -66,7 +66,7 @@ go get -v github.com/cjx2328/gocms
 - [GORM] - [http://gorm.io/](http://gorm.io/)
 - [Casbin] - [https://casbin.org/](https://casbin.org/)
 - [vue-element-admin] - [https://github.com/PanJiaChen/vue-element-admin/](https://github.com/PanJiaChen/vue-element-admin/)
-- [goapp] - [https://github.com/it234/goapp/](https://github.com/it234/goapp/)
+- [goapp] - [https://github.com/cjx2328/gocms/](https://github.com/cjx2328/gocms/)
 
 
 ## MIT License

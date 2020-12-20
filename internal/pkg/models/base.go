@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/it234/goapp/internal/pkg/config"
-	"github.com/it234/goapp/internal/pkg/models/sys"
-	"github.com/it234/goapp/internal/pkg/models/db"
+	"github.com/cjx2328/gocms/internal/pkg/config"
+	"github.com/cjx2328/gocms/internal/pkg/models/sys"
+	"github.com/cjx2328/gocms/internal/pkg/models/db"
 
 	"github.com/jinzhu/gorm"
 )

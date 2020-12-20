@@ -3,8 +3,8 @@ package sys
 import (
 	"time"
 
-	"github.com/it234/goapp/internal/pkg/models/basemodel"
-	"github.com/it234/goapp/internal/pkg/models/db"
+	"github.com/cjx2328/gocms/internal/pkg/models/basemodel"
+	"github.com/cjx2328/gocms/internal/pkg/models/db"
 
 	"github.com/jinzhu/gorm"
 )
