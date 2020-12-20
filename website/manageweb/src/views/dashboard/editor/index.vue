@@ -82,30 +82,43 @@
 
 
 
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>业务处理</span>
+            <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+          </div>
+          <div  :data="tableData"  class="text item">
+            <el-table
+                    :data="tableData"
+                    style="width: 100%">
 
-        <el-table
-                :data="tableData"
-                style="width: 100%">
-          <el-table-column
-                  prop="date"
-                  label="订单统计报表"
-          >
-          </el-table-column>
+              <el-table-column
+                      prop="date"
+                      label="排名"
+              >
+              </el-table-column>
+
+              <el-table-column
+                      prop="date"
+                      label="商品名称"
+              >
+              </el-table-column>
+
+              <el-table-column
+                      prop="date"
+                      label="数量"
+              >
+              </el-table-column>
 
 
-        </el-table>
-
-           <el-table
-                :data="tableData"
-                style="width: 100%">
-          <el-table-column
-                  prop="date"
-                  label="商品销售排行"
-          >
-          </el-table-column>
+            </el-table>
+          </div>
+        </el-card>
 
 
-        </el-table>
+
+
+
 
 
 

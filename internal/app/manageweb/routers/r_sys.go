@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/it234/goapp/internal/app/manageweb/controllers/sys"
+	"github.com/cjx2328/gocms/internal/app/manageweb/controllers/sys"
 
 	"github.com/gin-gonic/gin"
 )
@@ -37,4 +37,7 @@ func RegisterRouterSys(app *gin.RouterGroup) {
 	app.POST("/role/update", role.Update)
 	app.POST("/role/create", role.Create)
 	app.POST("/role/setrole", role.SetRole)
+	systemconfig := sys.Systemconfig{}
+	app.GET("/systemconfig/list",systemconfig.List)
+
 }

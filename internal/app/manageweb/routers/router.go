@@ -4,7 +4,7 @@ import (
 	//"html/template"
 	"net/http"
 
-	"github.com/it234/goapp/internal/app/manageweb/middleware"
+	"github.com/cjx2328/gocms/internal/app/manageweb/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,6 +31,7 @@ func RegisterRouter(app *gin.Engine) {
 	notCheckPermissionUrlArr = append(notCheckPermissionUrlArr, apiPrefix+"/user/editpwd")
 	notCheckPermissionUrlArr = append(notCheckPermissionUrlArr, apiPrefix+"/role/rolemenuidlist")
 	notCheckPermissionUrlArr = append(notCheckPermissionUrlArr, apiPrefix+"/role/allrole")
+	notCheckPermissionUrlArr = append(notCheckPermissionUrlArr, apiPrefix+"/systemconfig/list")
 	g.Use(middleware.CasbinMiddleware(
 		middleware.AllowPathPrefixSkipper(notCheckPermissionUrlArr...),
 	))
