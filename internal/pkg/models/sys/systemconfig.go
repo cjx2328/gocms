@@ -33,10 +33,10 @@ func (m *Systemconfig) BeforeUpdate(scope *gorm.Scope) error {
 }
 
 // 获取菜单有权限的操作列表
-func (Systemconfig) GetSystemconfigList() (err error) {
+func (Systemconfig) GetSystemconfigList( out interface{} ) (err error) {
 	sql := `select * from tb_sys_systemconfig`
-	err = db.DB.Raw(sql ).Error
-	return
+	err = db.DB.Select(sql ).Error
+	return err
 }
 
 // 获取列表

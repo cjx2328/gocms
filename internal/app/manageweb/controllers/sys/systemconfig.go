@@ -2,6 +2,7 @@ package sys
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/cjx2328/gocms/internal/app/manageweb/controllers/common"
@@ -22,13 +23,16 @@ type Systemconfig struct{}
 
 // 获取系统配置列表
 func (Systemconfig) List(c *gin.Context) {
+	fmt.Println("tes")
   list:= sys.Systemconfig{}
-  err :=list.GetSystemconfigList
-  if err != nil{
-  	common.ResErrSrv(c)
-  	return
-  }
- common.ResSuccessPage(c,total,&list)
+  getlist := []sys.Systemconfig{}
+  err := list.GetSystemconfigList(&getlist)
+
+	if err != nil {
+		common.ResErrSrv(c)
+		return
+	}
+	common.ResJSON(c, 201, &getlist)
 }
 
 // 用户登出
