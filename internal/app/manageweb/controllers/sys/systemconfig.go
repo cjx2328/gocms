@@ -29,8 +29,6 @@ func (Systemconfig) List(c *gin.Context) {
   	return
   }
  common.ResSuccessPage(c,total,&list)
-
-
 }
 
 // 用户登出
