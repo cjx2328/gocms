@@ -40,7 +40,9 @@ func (Systemconfig) GetSystemconfigList() (err error) {
 }
 
 // 获取列表
-
+func (Systemconfig) Savesytemconfig(){
+	
+}
 
 
 
