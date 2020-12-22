@@ -18,6 +18,7 @@ func RegisterRouter(app *gin.Engine) {
 	var notCheckLoginUrlArr []string
 	notCheckLoginUrlArr = append(notCheckLoginUrlArr, apiPrefix+"/user/login")
 	notCheckLoginUrlArr = append(notCheckLoginUrlArr, apiPrefix+"/user/logout")
+	//notCheckLoginUrlArr = append(notCheckLoginUrlArr, apiPrefix+"/systemconfig/list")
 	g.Use(middleware.UserAuthMiddleware(
 		middleware.AllowPathPrefixSkipper(notCheckLoginUrlArr...),
 	))

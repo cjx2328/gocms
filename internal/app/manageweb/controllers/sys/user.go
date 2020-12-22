@@ -208,7 +208,7 @@ type UserData struct {
 
 // 获取用户信息及可访问的权限菜单
 func (User) Info(c *gin.Context) {
-	// 用户ID
+	// 用户ID sdafs
 	uid, isExit := c.Get(common.USER_ID_Key)
 	if !isExit {
 		common.ResFailCode(c, "token 无效", 50008)

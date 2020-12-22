@@ -1,19 +1,17 @@
 package sys
 
 import (
-	"encoding/json"
 	"fmt"
-	"time"
 
 	"github.com/cjx2328/gocms/internal/app/manageweb/controllers/common"
-	models "github.com/cjx2328/gocms/internal/pkg/models/common"
+
 	"github.com/cjx2328/gocms/internal/pkg/models/sys"
 	"github.com/cjx2328/gocms/pkg/cache"
-	"github.com/cjx2328/gocms/pkg/convert"
-	"github.com/cjx2328/gocms/pkg/hash"
+
+
 	"github.com/cjx2328/gocms/pkg/jwt"
-	"github.com/cjx2328/gocms/pkg/logger"
-	"github.com/cjx2328/gocms/pkg/util"
+
+
 
 
 	"github.com/gin-gonic/gin"
@@ -26,13 +24,12 @@ func (Systemconfig) List(c *gin.Context) {
 	fmt.Println("tes")
   list:= sys.Systemconfig{}
   getlist := []sys.Systemconfig{}
-  err := list.GetSystemconfigList(&getlist)
+  list.GetSystemconfigList(&sys.Systemconfig{} , &getlist)
 
-	if err != nil {
-		common.ResErrSrv(c)
-		return
-	}
+	fmt.Println(getlist)
 	common.ResJSON(c, 201, &getlist)
+
+	return
 }
 
 // 用户登出
