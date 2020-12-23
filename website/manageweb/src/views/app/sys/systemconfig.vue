@@ -62,7 +62,10 @@
                      <el-form-item label="seo描述">
                   <el-input type="textarea" v-model="sysconfig.site_seo_desc" placeholder="请输入seo描述" />
                 </el-form-item>
-
+                <el-form-item>
+                  <el-button type="primary" @click="savesysconfig">保存</el-button>
+                  <el-button>取消</el-button>
+                </el-form-item>
               </el-form>
             </el-tab-pane>
             <el-tab-pane label="其他设置" name="otherConfig">
@@ -77,7 +80,10 @@
 
 
                 </el-form-item>
-
+                <el-form-item>
+                  <el-button type="primary" @click="savesysconfig">保存</el-button>
+                  <el-button>取消</el-button>
+                </el-form-item>
               </el-form>
             </el-tab-pane>
 
@@ -104,7 +110,7 @@ export default {
   data() {
     return {
       sysconfig: {
-        site_name: '',
+        site_name: 'sdfdsf',
         site_host: '',
         site_images: '',
         site_icp: '',
@@ -132,26 +138,59 @@ export default {
 
     },
     methods: {
+
         handleRemove(file, fileList) {
             console.log(file, fileList);
         },
         handlePreview(file) {
             console.log(file);
         },getList() {
+            var _this = this;
             const token = this.$store.getters.token;
-            this.listLoading = true
+            this.listLoading = true;
             requestsysconfigs(token).then(response => {
                console.group("test")
                console.log("test")
-               console.log(response.data)
-                _this = this;
-               if(response.data.code==20000){
-                   _this.sysconfig.site_name =
+               console.log(response.data.site_name.content);
+
+               var _thisdata = _this.sysconfig;
+               var _this_response_data = response.data;
+                console.log(_this_response_data);
+                console.log(response.code);
+               if(response.code !==20000){
+
+               }else{
+                   console.log(_thisdata);
+                   _thisdata.site_name                =_this_response_data.site_name.content;
+                   _thisdata.site_host                =_this_response_data.site_host.content;
+                   _thisdata.site_images              =_this_response_data.site_images.content;
+                   _thisdata.site_icp                 =_this_response_data.site_icp.content;
+                   _thisdata.site_copyright           =_this_response_data.site_copyright.content;
+                   _thisdata.site_addresss            =_this_response_data.site_addresss.content;
+                   _thisdata.site_mobile              =_this_response_data.site_mobile.content;
+                   _thisdata.site_email               =_this_response_data.site_email.content;
+                   _thisdata.site_countcode            =_this_response_data.site_countcode.content;
+                   _thisdata.site_servicecode          =_this_response_data.site_servicecode.content;
+                   _thisdata.site_seo_title           =_this_response_data.site_seo_title.content;
+                   _thisdata.site_seo_keywords         =_this_response_data.site_seo_keywords.content;
+                   _thisdata.site_seo_desc             =_this_response_data.site_seo_desc.content;
+                   _thisdata.site_verify_code_switch  =_this_response_data.site_verify_code_switch.content;
 
 
                }
+
                 this.listLoading = false
             })
+        },
+
+        savesysconfig(){
+
+            this.loading = true;
+            // var _this = this;
+            // var _thissysconfig = this .sysconfig ;
+            const sysconfigdataData = Object.assign({}, this.sysconfig)
+             console.log(sysconfigdataData);
+
         }
     },
     created(){

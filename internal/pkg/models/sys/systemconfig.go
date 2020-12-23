@@ -15,10 +15,17 @@ type Systemconfig struct {
 	Content         string `gorm:"column:content;size:72;" json:"content" form:"content"`                                       // 菜单URL
 }
 
+type Systemconfigjson struct {
+	Title string
+	Content string
+}
+
 // 表名
 func (Systemconfig) TableName() string {
 	return TableName("systemconfig")
 }
+
+
 
 // 添加前
 func (m *Systemconfig) BeforeCreate(scope *gorm.Scope) error {
@@ -43,6 +50,8 @@ func (Systemconfig) GetSystemconfigList(model ,out interface{} ) (err error) {
 func (Systemconfig) Savesytemconfig(){
 
 }
+
+
 
 
 
