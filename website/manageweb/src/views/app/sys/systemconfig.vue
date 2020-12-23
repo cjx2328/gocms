@@ -150,57 +150,31 @@ export default {
             const token = this.$store.getters.token;
             this.listLoading = true;
             requestsysconfigs(token).then(response => {
-
                var _thisdata = _this.sysconfig;
                var _this_response_data = response.data;
-
                if(response.code !==20000){
                    this.$alert('获取数据失败，请稍后再试！', '获取系统配置数据失败', {
                        confirmButtonText: '确定',
-
                    });
                }else{
-
                    _this.verifydata =_this_response_data;
-
                    for(var key in _thisdata){
                       if(_this_response_data.hasOwnProperty(key)){
                           _thisdata[key] = _this_response_data[key].content;
                       }
-
                    }
-                   // _thisdata.site_name                =_this_response_data.site_name.content;
-                   // _thisdata.site_host                =_this_response_data.site_host.content;
-                   // _thisdata.site_images              =_this_response_data.site_images.content;
-                   // _thisdata.site_icp                 =_this_response_data.site_icp.content;
-                   // _thisdata.site_copyright           =_this_response_data.site_copyright.content;
-                   // _thisdata.site_addresss            =_this_response_data.site_addresss.content;
-                   // _thisdata.site_mobile              =_this_response_data.site_mobile.content;
-                   // _thisdata.site_email               =_this_response_data.site_email.content;
-                   // _thisdata.site_countcode            =_this_response_data.site_countcode.content;
-                   // _thisdata.site_servicecode          =_this_response_data.site_servicecode.content;
-                   // _thisdata.site_seo_title           =_this_response_data.site_seo_title.content;
-                   // _thisdata.site_seo_keywords         =_this_response_data.site_seo_keywords.content;
-                   // _thisdata.site_seo_desc             =_this_response_data.site_seo_desc.content;
-                   // _thisdata.site_verify_code_switch  =_this_response_data.site_verify_code_switch.content;
-
-
                }
-
                 this.listLoading = false
             })
         },
 
         savesysconfig(){
-
             this.loading = true;
             var _this = this;
             const sysconfigdataData = Object.assign({}, _this.sysconfig);
-
             var verifyolddata = _this.verifydata;
             var newarrays = {};
             for (var key in sysconfigdataData){
-
                 if(sysconfigdataData[key].length>0 ){
                     if(verifyolddata.hasOwnProperty(key)    ){
                         if(sysconfigdataData[key]!==verifyolddata[key].content){
@@ -209,7 +183,6 @@ export default {
                     }else{
                         newarrays[key] = sysconfigdataData[key];
                     }
-
                 }
             }
 
@@ -221,13 +194,9 @@ export default {
              }else{
                  this.$alert('需要上传的数据没有变化或者为空，请修改或者查证后再试！', '请确定数据正确性', {
                      confirmButtonText: '确定',
-
                  });
 
              }
-
-
-
 
         }
     },
