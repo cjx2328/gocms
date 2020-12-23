@@ -150,14 +150,10 @@ export default {
             const token = this.$store.getters.token;
             this.listLoading = true;
             requestsysconfigs(token).then(response => {
-               console.group("test")
-               console.log("test")
-               console.log(response.data.site_name.content);
 
                var _thisdata = _this.sysconfig;
                var _this_response_data = response.data;
-                console.log(_this_response_data);
-                console.log(response.code);
+
                if(response.code !==20000){
 
                }else{
@@ -189,11 +185,10 @@ export default {
             this.loading = true;
             var _this = this;
             const sysconfigdataData = Object.assign({}, _this.sysconfig);
-            // var _thissysconfig = this .sysconfig ;
+
             var verifyolddata = _this.verifydata
             var newarrays = {};
             for (var key in sysconfigdataData){
-
 
                 if(sysconfigdataData[key].lenght>0 && sysconfigdataData[key]!=verifyolddata.key.content){
                     newarrays[key] = sysconfigdataData[key];
@@ -201,11 +196,8 @@ export default {
 
             }
 
-
              if(newarrays.length >0){
                  updatesysconfigs(sysconfigdataData).then(response=>{
-
-                     console.log(response);
 
                  });
              }else{
