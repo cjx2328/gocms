@@ -46,7 +46,7 @@
                   <el-input type="textarea" v-model="sysconfig.site_servicecode" placeholder="请输入在线客服代码"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="savesysconfig">保存</el-button>
+                  <el-button type="primary" @click="savesysconfig()">保存</el-button>
                   <el-button>取消</el-button>
                 </el-form-item>
               </el-form>
@@ -63,7 +63,7 @@
                   <el-input type="textarea" v-model="sysconfig.site_seo_desc" placeholder="请输入seo描述" />
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="savesysconfig">保存</el-button>
+                  <el-button type="primary" @click="savesysconfig()">保存</el-button>
                   <el-button>取消</el-button>
                 </el-form-item>
               </el-form>
@@ -81,7 +81,7 @@
 
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="savesysconfig">保存</el-button>
+                  <el-button type="primary" @click="savesysconfig()">保存</el-button>
                   <el-button>取消</el-button>
                 </el-form-item>
               </el-form>
@@ -103,7 +103,7 @@ import waves from '@/directive/waves'
 import Pagination from '@/components/Pagination'
 import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
-import {requestsysconfigs} from "../../../api/app/sys/systemconfig";
+import {requestsysconfigs ,updatesysconfigs} from "../../../api/app/sys/systemconfig";
 
 export default {
   name: 'Systemconfig',
@@ -125,6 +125,7 @@ export default {
         site_seo_desc: '',
         site_verify_code_switch: '',
       },
+        verifydata:{},
       activeName: 'baseConfig',
         fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
 
@@ -175,7 +176,7 @@ export default {
                    _thisdata.site_seo_keywords         =_this_response_data.site_seo_keywords.content;
                    _thisdata.site_seo_desc             =_this_response_data.site_seo_desc.content;
                    _thisdata.site_verify_code_switch  =_this_response_data.site_verify_code_switch.content;
-
+                   _this.verifydata =_thisdata;
 
                }
 
@@ -186,10 +187,37 @@ export default {
         savesysconfig(){
 
             this.loading = true;
-            // var _this = this;
+            var _this = this;
+            const sysconfigdataData = Object.assign({}, _this.sysconfig);
             // var _thissysconfig = this .sysconfig ;
-            const sysconfigdataData = Object.assign({}, this.sysconfig)
-             console.log(sysconfigdataData);
+            var verifyolddata = _this.verifydata
+            var newarrays = {};
+            for (var key in sysconfigdataData){
+
+
+                if(sysconfigdataData[key].lenght>0 && sysconfigdataData[key]!=verifyolddata.key.content){
+                    newarrays[key] = sysconfigdataData[key];
+                }
+
+            }
+
+
+             if(newarrays.length >0){
+                 updatesysconfigs(sysconfigdataData).then(response=>{
+
+                     console.log(response);
+
+                 });
+             }else{
+                 this.$alert('需要上传的数据没有变化或者为空，请修改或者查证后再试！', '请确定数据正确性', {
+                     confirmButtonText: '确定',
+
+                 });
+
+             }
+
+
+
 
         }
     },

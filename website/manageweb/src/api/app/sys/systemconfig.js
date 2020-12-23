@@ -7,3 +7,11 @@ export function requestsysconfigs(token) {
     params: { token }
   })
 }
+
+export function updatesysconfigs(data){
+  return request({
+    url: '/systemconfig/update',
+    method: 'post',
+    data
+  })
+}

@@ -39,5 +39,6 @@ func RegisterRouterSys(app *gin.RouterGroup) {
 	app.POST("/role/setrole", role.SetRole)
 	systemconfig := sys.Systemconfig{}
 	app.GET("/systemconfig/list",systemconfig.List)
+	app.POST("/systemconfig/update",systemconfig.Save)
 
 }

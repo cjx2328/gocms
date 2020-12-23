@@ -34,5 +34,15 @@ func (Systemconfig) List(c *gin.Context) {
 	return
 }
 
+func (Systemconfig) Save(c *gin.Context){
+		models :=sys.Systemconfig{}
+		err := c.Bind(&models)
+		if err !=nil {
+			common.ResErrSrv(c,err)
+			return
+		}
+	common.ResSuccess(c , &models)
+}
+
 
 
