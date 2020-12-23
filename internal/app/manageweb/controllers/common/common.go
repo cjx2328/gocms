@@ -57,6 +57,8 @@ func ResJSON(c *gin.Context, status int, v interface{}) {
 	c.Abort()
 }
 
+
+
 // 响应错误-服务端故障
 func ResErrSrv(c *gin.Context, err error) {
 	ret := ResponseModelBase{Code: FAIL_CODE, Message: "服务端故障"}

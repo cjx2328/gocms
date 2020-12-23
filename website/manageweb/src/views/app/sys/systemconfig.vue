@@ -70,7 +70,7 @@
                 <el-form-item label="验证码">
 
                   <el-switch
-                          v-model="value1"
+                          v-model="sysconfig.site_verify_code_switch"
                           active-text="开启"
                           inactive-text="关闭">
                   </el-switch>
@@ -97,13 +97,27 @@ import waves from '@/directive/waves'
 import Pagination from '@/components/Pagination'
 import SelectTree from '@/components/TreeSelect'
 import { checkAuthAdd, checkAuthDel, checkAuthView, checkAuthUpdate, checkAuthSetrolemenu } from '@/utils/permission'
+import {requestsysconfigs} from "../../../api/app/sys/systemconfig";
 
 export default {
   name: 'Systemconfig',
   data() {
     return {
       sysconfig: {
-        site_name: '忠告'
+        site_name: '',
+        site_host: '',
+        site_images: '',
+        site_icp: '',
+        site_copyright: '',
+        site_addresss: '',
+        site_mobile: '',
+        site_email: '',
+        site_countcode: '',
+        site_servicecode: '',
+        site_seo_title: '',
+        site_seo_keywords: '',
+        site_seo_desc: '',
+        site_verify_code_switch: '',
       },
       activeName: 'baseConfig',
         fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
@@ -112,13 +126,36 @@ export default {
         value2: true
     }
   },
+    computed:{
+
+
+
+    },
     methods: {
         handleRemove(file, fileList) {
             console.log(file, fileList);
         },
         handlePreview(file) {
             console.log(file);
+        },getList() {
+            const token = this.$store.getters.token;
+            this.listLoading = true
+            requestsysconfigs(token).then(response => {
+               console.group("test")
+               console.log("test")
+               console.log(response.data)
+                _this = this;
+               if(response.data.code==20000){
+                   _this.sysconfig.site_name =
+
+
+               }
+                this.listLoading = false
+            })
         }
+    },
+    created(){
+      this.getList()
     }
 }
 

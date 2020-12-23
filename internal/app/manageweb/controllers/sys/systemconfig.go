@@ -21,13 +21,14 @@ type Systemconfig struct{}
 
 // 获取系统配置列表
 func (Systemconfig) List(c *gin.Context) {
-	fmt.Println("tes")
+
   list:= sys.Systemconfig{}
   getlist := []sys.Systemconfig{}
   list.GetSystemconfigList(&sys.Systemconfig{} , &getlist)
 
-	fmt.Println(getlist)
-	common.ResJSON(c, 201, &getlist)
+  fmt.Println(&getlist)
+
+	common.ResSuccess(c,   &getlist)
 
 	return
 }
