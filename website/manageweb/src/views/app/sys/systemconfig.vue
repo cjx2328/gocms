@@ -155,24 +155,35 @@ export default {
                var _this_response_data = response.data;
 
                if(response.code !==20000){
+                   this.$alert('获取数据失败，请稍后再试！', '获取系统配置数据失败', {
+                       confirmButtonText: '确定',
 
+                   });
                }else{
-                   console.log(_thisdata);
-                   _thisdata.site_name                =_this_response_data.site_name.content;
-                   _thisdata.site_host                =_this_response_data.site_host.content;
-                   _thisdata.site_images              =_this_response_data.site_images.content;
-                   _thisdata.site_icp                 =_this_response_data.site_icp.content;
-                   _thisdata.site_copyright           =_this_response_data.site_copyright.content;
-                   _thisdata.site_addresss            =_this_response_data.site_addresss.content;
-                   _thisdata.site_mobile              =_this_response_data.site_mobile.content;
-                   _thisdata.site_email               =_this_response_data.site_email.content;
-                   _thisdata.site_countcode            =_this_response_data.site_countcode.content;
-                   _thisdata.site_servicecode          =_this_response_data.site_servicecode.content;
-                   _thisdata.site_seo_title           =_this_response_data.site_seo_title.content;
-                   _thisdata.site_seo_keywords         =_this_response_data.site_seo_keywords.content;
-                   _thisdata.site_seo_desc             =_this_response_data.site_seo_desc.content;
-                   _thisdata.site_verify_code_switch  =_this_response_data.site_verify_code_switch.content;
-                   _this.verifydata =_thisdata;
+
+                   _this.verifydata =_this_response_data;
+
+                   for(var key in _thisdata){
+                      if(_this_response_data.hasOwnProperty(key)){
+                          _thisdata[key] = _this_response_data[key].content;
+                      }
+
+                   }
+                   // _thisdata.site_name                =_this_response_data.site_name.content;
+                   // _thisdata.site_host                =_this_response_data.site_host.content;
+                   // _thisdata.site_images              =_this_response_data.site_images.content;
+                   // _thisdata.site_icp                 =_this_response_data.site_icp.content;
+                   // _thisdata.site_copyright           =_this_response_data.site_copyright.content;
+                   // _thisdata.site_addresss            =_this_response_data.site_addresss.content;
+                   // _thisdata.site_mobile              =_this_response_data.site_mobile.content;
+                   // _thisdata.site_email               =_this_response_data.site_email.content;
+                   // _thisdata.site_countcode            =_this_response_data.site_countcode.content;
+                   // _thisdata.site_servicecode          =_this_response_data.site_servicecode.content;
+                   // _thisdata.site_seo_title           =_this_response_data.site_seo_title.content;
+                   // _thisdata.site_seo_keywords         =_this_response_data.site_seo_keywords.content;
+                   // _thisdata.site_seo_desc             =_this_response_data.site_seo_desc.content;
+                   // _thisdata.site_verify_code_switch  =_this_response_data.site_verify_code_switch.content;
+
 
                }
 
@@ -186,17 +197,24 @@ export default {
             var _this = this;
             const sysconfigdataData = Object.assign({}, _this.sysconfig);
 
-            var verifyolddata = _this.verifydata
+            var verifyolddata = _this.verifydata;
             var newarrays = {};
             for (var key in sysconfigdataData){
 
-                if(sysconfigdataData[key].lenght>0 && sysconfigdataData[key]!=verifyolddata.key.content){
-                    newarrays[key] = sysconfigdataData[key];
-                }
+                if(sysconfigdataData[key].length>0 ){
+                    if(verifyolddata.hasOwnProperty(key)    ){
+                        if(sysconfigdataData[key]!==verifyolddata[key].content){
+                            newarrays[key] = sysconfigdataData[key];
+                        }
+                    }else{
+                        newarrays[key] = sysconfigdataData[key];
+                    }
 
+                }
             }
 
-             if(newarrays.length >0){
+            const sendnewarrays = Object.assign({}, newarrays);
+             if( sendnewarrays !=={}){
                  updatesysconfigs(sysconfigdataData).then(response=>{
 
                  });
