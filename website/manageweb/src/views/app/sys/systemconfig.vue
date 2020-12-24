@@ -110,7 +110,7 @@ export default {
   data() {
     return {
       sysconfig: {
-        site_name: 'sdfdsf',
+        site_name: '',
         site_host: '',
         site_images: '',
         site_icp: '',
