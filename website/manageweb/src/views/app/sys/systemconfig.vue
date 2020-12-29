@@ -3,9 +3,9 @@
     <div class="filter-container">
       <el-row>
         <el-col span="8">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs v-model="activeName"  >
             <el-tab-pane label="基础设置" name="baseConfig">
-              <el-form ref="form" :model="form" label-width="80px">
+              <el-form ref="form" :model="sysconfig" label-width="80px">
                 <el-form-item label="网站名称">
                   <el-input v-model="sysconfig.site_name" placeholder="请输入网站名称" />
                 </el-form-item>
@@ -13,12 +13,16 @@
                   <el-input v-model="sysconfig.site_host" placeholder="请输入网站的地址 例如: http://www.google.com"/>
                 </el-form-item>
                 <el-form-item label="网站logo">
+                  <el-input type="hidden" v-model="sysconfig.site_log"></el-input>
                   <el-upload
                           class="upload-demo"
                           action="/api/systemconfig/uploadedfile"
                           :on-preview="handlePreview"
                           :on-remove="handleRemove"
                           :file-list="fileList"
+                          :before-upload="onBeforeUpload"
+                          :on-success="uploadFileSuccess"
+
                           list-type="picture">
                     <el-button size="small" type="primary">点击上传</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -52,7 +56,7 @@
               </el-form>
             </el-tab-pane>
             <el-tab-pane label="SEO设置" name="seoConfig">
-              <el-form ref="form" :model="form" label-width="80px">
+              <el-form ref="form" :model="sysconfig" label-width="80px">
                 <el-form-item label="seo标题">
                   <el-input v-model="sysconfig.site_seo_title" placeholder="请输入seo标题" />
                 </el-form-item>
@@ -69,11 +73,12 @@
               </el-form>
             </el-tab-pane>
             <el-tab-pane label="其他设置" name="otherConfig">
-              <el-form ref="form" :model="form" label-width="80px">
+              <el-form ref="form" :model="sysconfig" label-width="80px">
                 <el-form-item label="验证码">
 
                   <el-switch
                           v-model="sysconfig.site_verify_code_switch"
+                          active-value="1" inactive-value="0"
                           active-text="开启"
                           inactive-text="关闭">
                   </el-switch>
@@ -127,7 +132,7 @@ export default {
       },
         verifydata:{},
       activeName: 'baseConfig',
-        fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
+        fileList: []
 
         , value1: true,
         value2: true
@@ -161,6 +166,11 @@ export default {
                    for(var key in _thisdata){
                       if(_this_response_data.hasOwnProperty(key)){
                           _thisdata[key] = _this_response_data[key].content;
+                          if(key=="site_images"){
+                              console.log(_this_response_data[key].content);
+                              _this.fileList =  [{name: 'site_images', url: "http://localhost:8080/"+ _this_response_data[key].content}];
+                          }
+
                       }
                    }
                }
@@ -197,6 +207,10 @@ export default {
               // console.log(JSON.stringify(newarrays));
               // console.log(JSON.stringify(senddata));
               // console.log( senddata );
+
+
+
+
              if(senddata.length  > 0){
                  updatesysconfigs( senddata).then(response=>{
                      var _this_response_data = response.data;
@@ -222,11 +236,39 @@ export default {
 
              }
 
+        },
+        onBeforeUpload(file)
+        {
+            const isIMAGE = file.type === 'image/jpeg'||'image/gif'||'image/png';
+            const isLt1M = file.size / 1024 / 1024 < 1;
+
+            if (!isIMAGE) {
+                this.$message.error('上传文件只能是图片格式!');
+            }
+            if (!isLt1M) {
+                this.$message.error('上传文件大小不能超过 1MB!');
+            }
+            console.log(isIMAGE);
+            console.log(isLt1M);
+            console.log(file);
+            return isIMAGE && isLt1M;
+        },
+        uploadFileSuccess(response, file, fileList) {
+            var _this = this;
+            console.log(response);
+            console.log(file);
+            if (response.code == 20000) {
+                _this.sysconfig.site_images = response.data;
+                console.log(file);
+            } else {
+                this.$message.error(response.message);//文件上传错误提示
+            }
         }
     },
     created(){
       this.getList()
-    }
+    },
+
 }
 
 </script>

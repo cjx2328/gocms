@@ -95,9 +95,13 @@ func (Systemconfig)  SaveUploadedFile(c *gin.Context ) {
 	fmt.Println("filenameOnly =", filenameOnly)
 	newdst :=path.Join("./upload" , token+""+fileSuffix)
 
-	os.Rename(dst , newdst)
+	errrename :=os.Rename(dst , newdst)
 
+	if errrename !=nil{
+		fmt.Println(errrename)
+	}
 
+    common.ResSuccess(c,   newdst)
 }
 
 

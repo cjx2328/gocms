@@ -48,6 +48,8 @@ func initWeb(config *config.Config){
 	// 崩溃恢复
 	app.Use(middleware.RecoveryMiddleware())
 	app.LoadHTMLGlob(config.Web.StaticPath+"dist/*.html")
+	/// 添加静态路由地址
+	app.Static("/upload", config.Web.StaticPath+"upload")
 	app.Static("/static", config.Web.StaticPath+"dist/static")
 	app.Static("/resource", config.Web.StaticPath+"resource")
 	app.StaticFile("/favicon.ico", config.Web.StaticPath+"dist/favicon.ico")
