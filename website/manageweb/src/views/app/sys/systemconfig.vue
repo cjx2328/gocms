@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
       <el-row>
-        <el-col span="8">
+        <el-col :span="8">
           <el-tabs v-model="activeName"  >
             <el-tab-pane label="基础设置" name="baseConfig">
               <el-form ref="form" :model="sysconfig" label-width="80px">
