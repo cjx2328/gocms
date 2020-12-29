@@ -2,7 +2,7 @@ package common
 
 import(
 	"github.com/cjx2328/gocms/internal/pkg/models/db"
-	
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -15,6 +15,8 @@ func Create(value interface{})error{
 func Save(value interface{})error{
 	return db.DB.Save(value).Error
 }
+
+
 
 // Updates
 func Updates(where interface{},value interface{})error{

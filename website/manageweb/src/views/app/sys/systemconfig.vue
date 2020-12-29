@@ -15,7 +15,7 @@
                 <el-form-item label="网站logo">
                   <el-upload
                           class="upload-demo"
-                          action="https://jsonplaceholder.typicode.com/posts/"
+                          action="/api/systemconfig/uploadedfile"
                           :on-preview="handlePreview"
                           :on-remove="handleRemove"
                           :file-list="fileList"
@@ -174,21 +174,45 @@ export default {
             const sysconfigdataData = Object.assign({}, _this.sysconfig);
             var verifyolddata = _this.verifydata;
             var newarrays = {};
+            var senddata = [];
             for (var key in sysconfigdataData){
                 if(sysconfigdataData[key].length>0 ){
                     if(verifyolddata.hasOwnProperty(key)    ){
                         if(sysconfigdataData[key]!==verifyolddata[key].content){
-                            newarrays[key] = sysconfigdataData[key];
+                            newarrays["title"] =  key;
+                            newarrays["content"] = sysconfigdataData[key];
+                            senddata.push(newarrays);
+                            newarrays={};
                         }
                     }else{
-                        newarrays[key] = sysconfigdataData[key];
+                        newarrays["title"] =  key;
+                        newarrays["content"] = sysconfigdataData[key];
+                        senddata.push(newarrays);
+                        newarrays={};
                     }
                 }
             }
 
-            const sendnewarrays = Object.assign({}, newarrays);
-             if( sendnewarrays !=={}){
-                 updatesysconfigs(sysconfigdataData).then(response=>{
+            var  sendnewarrays = Object.assign({}, newarrays);
+              // console.log(JSON.stringify(newarrays));
+              // console.log(JSON.stringify(senddata));
+              // console.log( senddata );
+             if(senddata.length  > 0){
+                 updatesysconfigs( senddata).then(response=>{
+                     var _this_response_data = response.data;
+                     if(response.code !==20000){
+                         this.$alert('获取数据失败，请稍后再试！', '获取系统配置数据失败', {
+                             confirmButtonText: '确定',
+                         });
+                     }else{
+                         this.$message({
+                             message: '更新成功',
+                             type: 'success'
+                         });
+
+                         _this.getList();
+                     }
+
 
                  });
              }else{

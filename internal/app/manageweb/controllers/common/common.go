@@ -14,6 +14,7 @@ const (
 	USER_ID_Key           = "X-USERID" //页面用户ID键名
 	USER_UUID_Key         = "X-UUID"   //页面UUID键名
 	SUPER_ADMIN_ID uint64 = 956986 // 超级管理员账号ID
+	uploadFileKey         = "files"
 )
 
 type ResponseModel struct {
@@ -111,3 +112,18 @@ func GetPageSort(c *gin.Context) string {
 func GetPageKey(c *gin.Context) string {
 	return GetQueryToStr(c, "key")
 }
+
+/// 上传接口
+func UploadFiles(c *gin.Context){
+	header ,err := c.FormFile(uploadFileKey)
+	if err != nil{
+		return
+	}
+
+	dst :=header.Filename
+	if err := c.SaveUploadedFile(header,dst) ; err != nil{
+		return
+	}
+
+}
+

@@ -40,5 +40,6 @@ func RegisterRouterSys(app *gin.RouterGroup) {
 	systemconfig := sys.Systemconfig{}
 	app.GET("/systemconfig/list",systemconfig.List)
 	app.POST("/systemconfig/update",systemconfig.Save)
+	app.POST("/systemconfig/uploadedfile",systemconfig.SaveUploadedFile)
 
 }
