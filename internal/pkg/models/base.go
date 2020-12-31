@@ -42,4 +42,5 @@ func Migration() {
 	fmt.Println(db.DB.AutoMigrate(new(sys.RoleMenu)).Error)
 	fmt.Println(db.DB.AutoMigrate(new(sys.Role)).Error)
 	fmt.Println(db.DB.AutoMigrate(new(sys.AdminsRole)).Error)
+	fmt.Println(db.DB.AutoMigrate(new(sys.Adminlogs)).Error)
 }

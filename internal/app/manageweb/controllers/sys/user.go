@@ -236,7 +236,7 @@ func (User) Info(c *gin.Context) {
 			models.Create(&menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/systemconfig", Name: "系统设置", Sequence: 30, MenuType: 2, Code: "Systemconfig",Icon:"documentation",OperateType:"none"}
 			models.Create(&menuModel)
-			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/adminLogs", Name: "管理员日志", Sequence: 30, MenuType: 2, Code: "AdminLogs",Icon:"documentation",OperateType:"none"}
+			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/adminlogs", Name: "管理员日志", Sequence: 30, MenuType: 2, Code: "Adminlogs",Icon:"documentation",OperateType:"none"}
 			models.Create(&menuModel)
 			InitMenu(menuModel)
 			menuModel = sys.Menu{Status: 1, ParentID: menuModelSys.ID, URL: "/emailconfig", Name: "邮箱设置", Sequence: 40, MenuType: 2, Code: "Emailconfig",Icon:"documentation",OperateType:"none"}

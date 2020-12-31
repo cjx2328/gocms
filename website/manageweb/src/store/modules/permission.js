@@ -202,5 +202,6 @@ export const componentsMap = {
   Weixinfans: () => import('@/views/app/sys/weixinfans'), // 粉丝管理
   Weixinreplays: () => import('@/views/app/sys/weixinreplays'), // 自动回复
   Holidays: () => import('@/views/app/sys/holidays'), // 假日插件
+  Adminlogs: () => import('@/views/app/sys/adminlogs'), // 管理员日志
   Test: () => import('@/views/app/sys/test') // test
 }
